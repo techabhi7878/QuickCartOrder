@@ -5,7 +5,10 @@ import com.ecommerce.QuickCart.Order.DTO.OrderDto;
 import com.ecommerce.QuickCart.Order.Entity.Order;
 import com.ecommerce.QuickCart.Order.Entity.OrderStatus;
 import com.ecommerce.QuickCart.Order.Repository.OrderRepository;
+import com.ecommerce.QuickCart.Order.Service.CartClient;
 import com.ecommerce.QuickCart.Order.Service.OrderService;
+import com.ecommerce.QuickCart.Order.Service.PaymentClient;
+import com.ecommerce.QuickCarts.DTO.CartDto;
 
 import lombok.RequiredArgsConstructor;
 
@@ -18,6 +21,13 @@ import java.util.stream.Collectors;
 
 public class OrderServiceImpl implements OrderService {
 	
+	
+	@Autowired
+	private CartClient cartClient;
+	
+	
+	@Autowired
+	private PaymentClient paymentClient;
 	
 	@Autowired
 	private  OrderRepository orderRepository;
@@ -58,6 +68,8 @@ public class OrderServiceImpl implements OrderService {
         orderRepository.deleteById(orderId);
     }
 
-	
+    public CartDto getCart(Long userId) {
+        return cartClient.getCartByUserId(userId);
+    }
 
 }

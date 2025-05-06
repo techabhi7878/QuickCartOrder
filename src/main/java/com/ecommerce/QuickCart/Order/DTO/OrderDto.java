@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.ecommerce.QuickCart.Order.Entity.OrderItem;
 import com.ecommerce.QuickCart.Order.Entity.OrderStatus;
 
 @Getter
